@@ -1,3 +1,4 @@
+% This code is from open source: https://github.com/MaJinWakeUp/HeWR/tree/master/utils
 % This function computes the mAP for a given set of returned results.
 %
 % Usage: map = compute_map (ranks, gnd);
