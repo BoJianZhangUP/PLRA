@@ -40,7 +40,6 @@ switch image_num
         query_files = dir(fullfile(datapath,net,'\datasets\',['oxford5k','_nquery'],'*.mat'));
 end
 
-
 eval(['load gnd_' test_set '.mat']);
 if ~exist("query_files","var")
     query_files = dir(fullfile(datapath,net,'\datasets\',[test_set,'_cquery'],'*.mat'));
@@ -49,7 +48,6 @@ test_files = dir(fullfile(datapath,net,'\datasets\',test_set,'*.mat'));
 train_files = dir(fullfile(datapath,net,'\datasets\',train_set,'*.mat'));
 
 test_index=rand_sum_sorting(test_files,k);
-
 
 fprintf('Extracting test set features...\n')
 eval(['load gnd_' test_set '.mat']);
@@ -62,11 +60,7 @@ train_features=features_aggregation(train_files,imlist,test_index,g_num);
 test_features_normalize=normalize(test_features,2,"norm");
 train_features_normalize=normalize(train_features,2,"norm");
 eval(['load gnd_' test_set '.mat']);
-
 warning off;
-
 query_nocrop_features_normalize=test_features_normalize(qidx,:);
-
-
 display_query_result(net,test_set,train_features_normalize,test_features_normalize,query_nocrop_features_normalize,gnd,qe,dis);
 
