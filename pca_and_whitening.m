@@ -1,4 +1,4 @@
-function [oxford_feature,coeff,mu,u,s,idx] = pca_and_whitening(XTrain1,XText,d)
+function [pcaw_feature,coeff,mu,u,s,idx] = pca_and_whitening(XTrain1,XText,d)
 
 [coeff,scoreTrain,~,~,explained,mu]=pca(XTrain1);
 
@@ -25,6 +25,6 @@ xRot=x_test*u;
 
 epsilon=1*10^(-5);
 xPCAWhite=diag(1./((diag(s)+epsilon).^(1/2)))*xRot';
-oxford_feature=xPCAWhite';
+pcaw_feature=xPCAWhite';
 
 end
