@@ -32,20 +32,20 @@ switch image_num
         train_set='oxford5k';
         test_set='paris106k';
         query_set='paris6k';
-        query_files = dir(fullfile(datapath,net,'\datasets\',['paris6k','_nquery'],'*.mat'));
+        query_files = dir(fullfile(datapath,net,'\datasets\',['paris6k','_nquery_pool5'],'*.mat'));
     case {'105'}
         train_set='paris6k';
         test_set='oxford105k';
         query_set='oxford5k';
-        query_files = dir(fullfile(datapath,net,'\datasets\',['oxford5k','_nquery'],'*.mat'));
+        query_files = dir(fullfile(datapath,net,'\datasets\',['oxford5k','_nquery_pool5'],'*.mat'));
 end
 
 eval(['load gnd_' test_set '.mat']);
 if ~exist("query_files","var")
-    query_files = dir(fullfile(datapath,net,'\datasets\',[test_set,'_cquery'],'*.mat'));
+    query_files = dir(fullfile(datapath,net,'\datasets\',[test_set,'_nquery_pool5'],'*.mat'));
 end
-test_files = dir(fullfile(datapath,net,'\datasets\',test_set,'*.mat'));
-train_files = dir(fullfile(datapath,net,'\datasets\',train_set,'*.mat'));
+test_files = dir(fullfile(datapath,net,'\datasets\',[test_set,'_pool5'],'*.mat'));
+train_files = dir(fullfile(datapath,net,'\datasets\',[train_set,'_pool5'],'*.mat'));
 
 test_index=rand_sum_sorting(test_files,k);
 
